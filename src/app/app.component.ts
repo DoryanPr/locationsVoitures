@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {CarService} from "./services/car/car.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'location-voiture';
+
+  cars: Array<any>
+
+  constructor(private carService: CarService) {
+
+  this.cars = this.carService.cars;
+  }
+
+  onClickChangeAllCarsStatus(newStatus: string) {
+  this.carService.changeAllCarsStatus(newStatus)
+  }
 }
+
